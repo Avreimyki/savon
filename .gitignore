@@ -12,3 +12,15 @@ tmp
 .rspec
 Gemfile.lock
 bin/
+
+\.idea/\.rakeTasks
+
+\.idea/misc\.xml
+
+\.idea/modules\.xml
+
+\.idea/savon\.iml
+
+\.idea/vcs\.xml
+
+\.idea/workspace\.xml

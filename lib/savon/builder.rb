@@ -115,12 +115,13 @@ module Savon
 
     def namespaces
       @namespaces ||= begin
-        namespaces = SCHEMA_TYPES.dup
+        namespaces = @wsdl.parser.namespaces.map{|key,val| {"xmlns:#{key}"=>val}}.reduce(:merge)
+        namespaces.merge(SCHEMA_TYPES)
 
         if namespace_identifier == nil
           namespaces["xmlns"] = @globals[:namespace] || @wsdl.namespace
         else
-          namespaces["xmlns:#{namespace_identifier}"] = @globals[:namespace] || @wsdl.namespace
+          # namespaces["xmlns:#{namespace_identifier}"] = @globals[:namespace] || @wsdl.namespace
         end
 
         key = ["xmlns"]

@@ -116,6 +116,7 @@ module Savon
     def namespaces
       @namespaces ||= begin
         namespaces = @wsdl.parser.namespaces.map{|key,val| {"xmlns:#{key}"=>val}}.reduce(:merge)
+        namespaces.delete("xmlns:xmlns")
         namespaces.merge(SCHEMA_TYPES)
 
         if namespace_identifier == nil
